@@ -1,0 +1,70 @@
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>SMS PROJECT</title>
+    <link type="text/css" rel="stylesheet" href="{% static 'css/adminstyle.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'css/facultystyle.css' %}"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      .card-container {
+        position: relative;
+        text-align: center;
+      }
+
+      .background-image {
+        width: 50%; /* Adjust the width as needed */
+        height: auto;
+      }
+
+      .card {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: white;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+    </style>
+  </head>
+  <body bgcolor="lightgrey">
+    <h1 align="center">Student Academic Management System</h1>
+    <br>
+    <nav class="navbar">
+      <ul class="nav-links">
+        <div class="menu">
+          <p style="bgcolor: lightgrey">
+            <a href="{% url 'facultyhome' %}">Home</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="{% url 'facultychangepwd' %}">Change Password</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+             <a href="{% url 'viewstudents' %}"> View Students</a>&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="{% url 'facultycourses' %}">My Courses</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="{% url 'facultylogin' %}">Logout</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </p>
+        </div>
+      </ul>
+    </nav>
+    <h5 align="right" style="color:green">Welcome {{fid}}</h5>
+    <br />
+    {% block 'body' %}
+      <div class="card-container">
+        <img class="background-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSv-LcTAnG8e4iTK8kV-MwKBItAhAdinj7z8u1v0ldTYVEVwZoRrl4I6K1_xYE_VK7XxwI&usqp=CAU" alt="Home Page">
+
+        <!-- Card in the center of the image -->
+        <div class="card">
+          <h4><b>{{faculty.facultyid}}-{{faculty.fullname}}</b></h4>
+          <p>{{faculty.department}}</p>
+          <p>{{faculty.qualification}}</p>
+          <p>{{faculty.email}}</p>
+          <p>{{faculty.contact}}</p>
+        </div>
+      </div>
+    {% endblock %}
+  </body>
+</html>

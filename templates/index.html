@@ -1,0 +1,137 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SMS PROJECT</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link type="text/css" rel="stylesheet" href="{% static 'css/style.css' %}"/>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #f7f7f7; /* Light Grey Background */
+            color: #333; /* Dark Grey Text Color */
+        }
+
+        .container {
+            position: relative;
+            text-align: center;
+        }
+
+        .background-image {
+            width: 100%;
+            height: 85%;
+            opacity: 0.4;
+        }
+
+        .text {
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translateX(-50%);
+            color: black; /* Coral Pink Text Color */
+            font-size: 36px;
+            font-weight: bold;
+        }
+
+        .navbar {
+            background-color: #4a90e2; /* Bright Blue Navbar Color */
+            overflow: hidden;
+        }
+
+        .nav-links {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: flex-end; /* Moved links to the right side */
+        }
+
+        .nav-links li {
+            display: inline;
+            margin-right: 20px; /* Increased margin between links */
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #fff; /* White Link Color */
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .nav-links a:hover {
+            background-color: #78c7c7; /* Light Blue Hover Color */
+            color: #333; /* Dark Grey Hover Text Color */
+        }
+
+        .dropdown-menu {
+            display: none;
+            opacity: 0;
+            animation: fadeIn 0.5s forwards;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        .dropdown-item {
+            color: #333; /* Dark Grey Text Color */
+            transition: color 0.3s;
+        }
+
+        .dropdown-item:hover {
+            color: #ff6666; /* Coral Pink Hover Color */
+        }
+
+        .form-control {
+            width: 200px;
+        }
+
+        .btn-outline-light {
+            color: #fff;
+            border-color: #fff;
+            background-color: #4a90e2; /* Bright Blue Button Color */
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar">
+    <div class="ml-auto">
+    <ul class="nav-links">
+        <div class="menu">
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'about' %}">About</a></li>
+            <div class="btn-group">
+            <li class="services dropdown">
+                <a href="#" style="color: #fff;">Login ▼</a>&nbsp;&nbsp;&nbsp;
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="{% url 'studentlogin' %}">Student</a></li>
+                    <li><a class="dropdown-item" href="{% url 'facultylogin' %}">Faculty</a></li>
+                    <li><a class="dropdown-item" href="{% url 'login' %}">Admin</a></li>
+                </ul>
+        </li></div></div>
+            <li><a href="{% url 'contact' %}">Contact Us</a></li>&nbsp;
+        <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-light" type="submit">Search</button>
+        </form>
+            </div>
+    </ul>
+</nav><br>
+{% block 'body' %}
+<div class="text">
+        Student Course Management System..!
+    </div>
+    <div class="container">
+        <img class="background-image" src="https://img.freepik.com/premium-psd/group-students-studying-together_53876-28079.jpg?w=1380" alt="Home Page">
+    </div>
+
+{% endblock %}
+</body>
+</html>
